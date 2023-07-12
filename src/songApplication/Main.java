@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static Album a1,a2;
+    private static ArrayList<Song> playList;
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
-        Album a1 = new Album("Old Hindi Songs","Kishore Kumar");
+       a1 = new Album("Old Hindi Songs","Kishore Kumar");
 
         a1.addNewSongToAlbum("Nile Nile Ambar",6.0);
         a1.addNewSongToAlbum("Meri bheegi si",5.0);
         a1.addNewSongToAlbum("Dil Kya kare",5.5);
         a1.addNewSongToAlbum("Ek ajnabi haseena",3.5);
 
-        Album a2 = new Album("Latest Bollywood songs","Jubin Natiyal");
+        a2 = new Album("Latest Bollywood songs","Jubin Natiyal");
 
         a2.addNewSongToAlbum("itti si hassi",4.5);
         a2.addNewSongToAlbum("Tere vaaste",3.5);
@@ -23,7 +25,7 @@ public class Main {
         a2.addNewSongToAlbum("Pasoori",3.5);
 
 
-        ArrayList<Song> playList = new ArrayList<>();
+         playList = new ArrayList<>();
 
         a1.addSongToPlayList(2,playList);
         a1.addSongToPlayList(4,playList);
@@ -83,9 +85,49 @@ public class Main {
                     isOver = true;
                     break;
                 case 8:
-                    //shuffle song and
+                {
+                    //shuffle the song...
+
+                    //let's just generate a random number..
+                    Double rand=Math.random()*100;
+                    int songNo=(int)(rand%playList.size());
+
+                  System.out.print(playList.get(songNo));
+                  break;
+                }
+
                 case 9:
-                    //Print song from an artist
+                {
+
+                    String artist=sc.next();
+
+                    if(artist.equals(a1.getArtistName()))
+                    {
+                        playList=new ArrayList<>();
+                        for(Song s:a1.getSongList())
+                        {
+                            //print the song..
+                            playList.add(s);
+                            System.out.print(s);
+                        }
+                    }
+                    else if(artist.equals(a2.getArtistName()))
+                    {
+                        playList=new ArrayList<>();
+                        for(Song s:a2.getSongList())
+                        {
+                            //print the song..
+                            playList.add(s);
+                            System.out.print(s);
+                        }
+                    }
+                    else{
+                        System.out.print("Artist Not Found");
+
+                    }
+                    break;
+
+                }
             }
             choice = sc.nextInt();
         }
