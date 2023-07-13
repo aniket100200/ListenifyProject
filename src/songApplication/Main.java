@@ -83,7 +83,7 @@ public class Main {
                     //1 line code : self completion exercie}
                     Song song=playList.get(currentIndex);
                     playList.remove(song);
-                    System.out.println("This Song is");
+                    System.out.println(song.getTitle()+"This Song is");
 
                     break;
                 }
