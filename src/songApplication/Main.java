@@ -41,7 +41,7 @@ public class Main {
         printMenu();
 
         System.out.println("Now Playing : ");
-        System.out.println(playList.get(0).toString());
+        System.out.println(playList.get(0));
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
@@ -58,7 +58,7 @@ public class Main {
                         System.out.println("You are at the last song");
                     }else{
                         currentIndex++;
-                        System.out.println(playList.get(currentIndex).toString());
+                        System.out.println(playList.get(currentIndex));
                     }
                     break;
                 case 2:
@@ -66,11 +66,11 @@ public class Main {
                         System.out.println("You are at the first Song");
                     else {
                         currentIndex--;
-                        System.out.println(playList.get(currentIndex).toString());
+                        System.out.println(playList.get(currentIndex));
                     }
                     break;
                 case 3:
-                    System.out.println(playList.get(currentIndex).toString());
+                    System.out.println(playList.get(currentIndex));
                     break;
                 case 4:
                     printMenu();
@@ -79,8 +79,14 @@ public class Main {
                     printAllSongs(playList);
                     break;
                 case 6:
-                        //1 line code : self completion exercie
+                {
+                    //1 line code : self completion exercie}
+                    Song song=playList.get(currentIndex);
+                    playList.remove(song);
+                    System.out.println("This Song is");
+
                     break;
+                }
                 case 7:
                     isOver = true;
                     break;
@@ -98,32 +104,31 @@ public class Main {
 
                 case 9:
                 {
-
-                    String artist=sc.next();
+                    System.out.println("Enter the Artist Name");
+                    Scanner scan=new Scanner(System.in);
+                    String artist=scan.nextLine();
 
                     if(artist.equals(a1.getArtistName()))
                     {
-                        playList=new ArrayList<>();
+
                         for(Song s:a1.getSongList())
                         {
                             //print the song..
-                            playList.add(s);
-                            System.out.print(s);
+                            System.out.println(s.getTitle());
                         }
                     }
                     else if(artist.equals(a2.getArtistName()))
                     {
-                        playList=new ArrayList<>();
+
                         for(Song s:a2.getSongList())
                         {
                             //print the song..
-                            playList.add(s);
-                            System.out.print(s);
+                            System.out.println(s);
                         }
                     }
-                    else{
+                    else
+                    {
                         System.out.print("Artist Not Found");
-
                     }
                     break;
 
@@ -153,6 +158,8 @@ public class Main {
         System.out.println("4. Print the Choice Menu");
         System.out.println("5. Print PlayList");
         System.out.println("6. Delete the current Song");
+        System.out.println("7. Close the playlist");
+        System.out.println("8. to Shuffle the Song");
         System.out.println("7. Close the playlist");
 
     }
